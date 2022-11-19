@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    Add a website
+
+{% endblock %}
+
+{% block main %}
+
+    
+        
+
+
+    <style>
+        .display-1{
+            margin-bottom: 4rem;
+        }
+        hr{
+            width: 35rem;
+            margin-bottom: 4rem;
+        }
+        .display-3{
+            margin-bottom: 3rem;
+        }
+    </style>
+
+    <!-- header text -->
+    <div class="container text-center my-3">
+        <h1 class="display-1">Briefly and tastefully highlight a website</h1>
+    </div>
+    <hr class="mx-auto">
+
+
+    <!-- some header text -->
+    <div class="container">
+
+    <div class="container">
+        <!-- the input form of images -->
+
+        <form action="add_website" method="post" enctype="multipart/form-data" id="form">   
+            <label for="image"><h4>Put website interface image here</h4></label>
+            <div class="d-flex justify-content-center">
+                <input type="file" id="image" name="image" class="form-control">
+            </div>
+            <span class="text-secondary">One image only</span>
+            <p id="feedback-1"></p>
+            
+
+         <!-- the text input form -->
+         
+         <!-- Brief idea of the website -->
+         <div class="mb-5 mt-5">
+            <label for="brief"><h4>Brief idea of the website</h4></label>
+            <textarea class="form-control" id="brief" value="niiiggga!" name="brief" rows="3" placeholder="What is the main idea of the recommanded website?"></textarea>
+            <span id="char_count">0</span>/100
+         </div>   
+
+
+         <!-- Describtion -->
+         <div class="mb-5">
+            <label for="description"><h4>Description</h4></label> 
+            <span><textarea class="form-control" id="description" name="description" rows="5" placeholder="Write a description about the desired website"></textarea></span>
+            <p id="feedback-2"></p>
+         </div>
+         <!-- How to use -->
+         <div class="mb-5 ">
+            <label for="HowToUse"><h4>How to use it</h4></label>
+            <textarea class="form-control" id="HowToUse" name="HowToUse" rows="5" placeholder="How to use the recommanded website?"></textarea>
+            <p id="feedback-3"></p>
+         </div>
+
+         <!-- overall information -->
+
+         <!-- Website name row -->
+         <div class="row mb-2 ">
+            <div class="col-auto">
+                <label for="name" class="col-form-label"><span class="h5">Website name:</span></label>
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control w-75" id="name" name="name" autocomplete="off" placeholder="Name">
+            </div>
+            <div class="col-auto">
+                <p id="feedback-4"></p>
+            </div>
+         <!-- Website link row -->   
+         </div>
+         <div class="row mb-2 ">
+            <div class="col-auto">
+                <label for="link" class="col-form-label"><span class="h5">Website link:</span></label>
+            </div>
+            <div class="col-auto pb-5">    
+                <input type="text" class="form-control w-75" id="link" name="link"  autocomplete="off" placeholder="Link">
+            </div>
+            <div class="col-auto">
+                <p id="feedback-5"></p>
+            </div>     
+         </div>
+         <!-- submit button-->
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-dark">Add</button>
+            </div>
+            <p id="feedback-6"></p>
+        </form>
+    </div>    
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            var textarea = document.getElementById("brief");
+            var characterCount = document.getElementById("char_count");
+
+            textarea.addEventListener("keyup", function() {
+                var characters = textarea.value.split('');
+                characterCount.innerText = characters.length;
+
+                if (characters.length > 100){
+                    textarea.value = textarea.value.substring(0, 100);
+                    characterCount.innerText = 100;
+
+
+                };
+            });
+        });
+
+    </script>   
+    
+{% endblock %}

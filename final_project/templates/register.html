@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    Register
+
+{% endblock %}
+
+{% block main %}
+
+    <div class="container w-25 text-center" style="margin-top:4rem;">
+        <form action="/Register" method="post">
+            <div class="container mb-2">
+                <h2 class="h2 pt-2">Register</h2>
+                <h5>register so you can add the websites you want!</h5>
+            </div>
+            <div class="mb-3">
+                <input type="username" id="username" name="username" autofocus autocomplete="off" placeholder="Name" class="form-control">
+            </div>  
+            <div class="mb-3">
+                <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+            </div>  
+            <div class=" container mb-3">
+                <button type="submit" class="btn btn-dark">  Submit </button> 
+            </div>
+            <p class="text-secondary">If the registeration process ran successfully, you will be redirected to the homepage</p>
+        </form>
+    </div>
+
+{% endblock %}

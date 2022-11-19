@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+
+    <style>
+        h5 {
+            margin-left: 6rem;
+        }
+        hr {
+            width: 69rem;
+            margin-bottom: 1rem;
+        }
+        #divider {
+            margin-top: 10rem;
+        }
+    </style>
+
+    <!-- Welcome box -->
+    <div class="box">
+        <div class="mb-2"><span class="display-1">WEBsiteR</span></div>
+        <div><span class="h6">know the best sites of the internet</span></div>
+        <!-- search box div -->
+        <div class="container mx-auto w-50 mt-3">
+            <form action="/search" method="post">
+                <label for="search" class="form-label text-secondary">Search for a specific website recommadation</label>
+                <input type="search" class="form-control" id="search" name="search" autocomplete="off" placeholder="Search"> 
+            </form>
+        </div>
+    </div>
+
+    <!-- websites cards -->
+    <div class="container" id="divider">
+        <h5>Try one</h5>
+        <hr class="mx-auto">
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="row">
+            {% for i in range(data | length) %}
+            <div class="col-sm">
+                <form action="/view" method="post">
+                <!--a python link -->
+                <input hidden name="input" id="input" value="{{ data[i]['name'] }}">  
+                <input hidden name="image_name_input" id="image_name_input" value="{{ data[i]['path'] }}">       
+                <div class="card" style="width:18rem;">
+                    <img src='{{ data[i]["path"] }}' alt="none">
+                    <div class="card-header h-5">
+                        {{ data[i]["user_name"] }}
+                    </div>
+                    <div class="card-body">
+                        <h4>{{ data[i]["name"] }}</h4>
+                        <p>{{ data[i]["brief"] }}</p>
+                        <button type="submit" class="btn btn-dark" value="{{ data[i]['name'] }}">View</button>
+                        <a href="{{ data[i]['link'] }}" class="btn btn-outline-dark">go to the site</a>
+                    </div>
+                </div>
+                </form>   
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Just showing the account that the user has signed in with -->
+    {% if session["user"] %}
+        <div class="container w-25 text-center mb-3" style="margin-top:10rem">
+            <h4 class="display-6 m-4">You're registered as {{ session["user"] }}!</h4>
+        </div>    
+    {% endif %}        
+
+
+
+{% endblock %}

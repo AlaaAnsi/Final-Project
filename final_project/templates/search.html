@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block title %}
+
+    Search results
+
+{% endblock %}
+
+{% block main %}
+
+    <style>
+        .card{
+            border-radius: 4px;
+        }
+    </style>
+
+
+    <div class="container mx-auto w-50 mt-5">
+        <form action="/search" method="post">
+            <input type="search" class="form-control" id="search" name="search" autocomplete="off" placeholder="Search"> 
+        </form>
+    </div>
+
+    {% if s_results %}
+    <div class="d-flex justify-content-center mt-5">
+    <div class="row">
+        {% for i in range(s_results | length) %}
+        <div class="col-sm">
+            <form action="/view" method="post">
+            <!--a python link -->
+            <input hidden name="input" id="input" value="{{ s_results[i]['name'] }}">         
+            <div class="card" style="width:18rem;">
+                <img src='{{ s_results[i]["path"] }}' alt="none">
+                <div class="card-header h-5">
+                    {{ s_results[i]["user_name"] }}
+                </div>
+                <div class="card-body">
+                    <h4>{{ s_results[i]["name"] }}</h4>
+                    <p>{{ s_results[i]["brief"] }}</p>
+                    <button type="submit" class="btn btn-dark" value="{{ s_results[i]['name'] }}">View</button>
+                    <a href="{{ s_results[i]['link'] }}" class="btn btn-outline-dark">go to the site</a>
+                </div>
+            </div>
+            </form>   
+        </div>
+        </div>
+        {% endfor %}
+
+    {% else %}
+    <div class="container text-center mx-auto" style="margin-top:3.5rem">
+        <span>No results has been found😞</span>
+    </div>
+    {% endif %}    
+
+{% endblock %}

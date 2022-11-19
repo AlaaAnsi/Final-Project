@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add Website
+{% endblock %}
+
+{% block main %}
+
+  <style>
+    #interface{
+      margin:auto;
+      border-radius:20px;
+      overflow:hidden;
+    }
+    .text{
+      margin-bottom:1rem;
+      margin-top:2rem;
+    }
+
+    .holder img{
+      width: 30%;
+      height: auto;
+    }
+
+  </style>
+
+<!-- A header -->
+  <div class="container text-center py-auto text" style="height:3rem;">
+    <h3>Website Interface</h3>
+  </div> 
+
+
+  <div class="mx-auto w-75 holder" id="interface">
+      <img src="{{ website[0]['path'] }}" class="d-block w-100" id="image">
+    </div>
+
+<!-- Describtion section -->
+  <div class="container w-75 text">
+    <h2>Describtion</h2>
+    <div>
+      <span style="white-space: pre-line">{{ website[0]["desc"] }}</span> 
+    </div>
+  </div>
+  
+<!-- How To Use section -->
+  <div class="container w-75 text">
+    <h2>How to use this website</h2>
+    <p> {{ website[0]["howto"] }} </p>
+  </div>
+
+<div class="container mt-5">
+    <!-- Website name row -->
+    <div class="row mb-2 ">
+      <div class="col-auto" style="margin-left:6rem">
+          <label for="name" class="col-form-label"><span class="h5">Website name:</span><span class="ms-4 ">{{ website[0]["name"] }}</span></label>
+      </div>
+      <div class="col-auto">
+          <p id="feedback-4"></p>
+      </div>
+  <!-- Website link row -->   
+  </div>
+  <div class="row mb-2 ">
+      <div class="col-auto" style="margin-left:6rem">
+          <label for="link" class="col-form-label"><span class="h5">Website link:</span><a href="{{ website[0]['link'] }}" class="ms-4">{{ website[0]["link"] }}</a></label>
+      </div>
+      <div class="col-auto">
+          <p id="feedback-5"></p>
+      </div>     
+  </div>
+</div>  
+
+{% endblock %}
