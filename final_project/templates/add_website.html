@@ -8,10 +8,6 @@
 
 {% block main %}
 
-    
-        
-
-
     <style>
         .display-1{
             margin-bottom: 4rem;
@@ -32,9 +28,6 @@
     <hr class="mx-auto">
 
 
-    <!-- some header text -->
-    <div class="container">
-
     <div class="container">
         <!-- the input form of images -->
 
@@ -52,7 +45,7 @@
          <!-- Brief idea of the website -->
          <div class="mb-5 mt-5">
             <label for="brief"><h4>Brief idea of the website</h4></label>
-            <textarea class="form-control" id="brief" value="niiiggga!" name="brief" rows="3" placeholder="What is the main idea of the recommanded website?"></textarea>
+            <textarea class="form-control" id="brief" name="brief" rows="3" placeholder="What is the main idea of the recommanded website?"></textarea>
             <span id="char_count">0</span>/100
          </div>   
 
@@ -91,6 +84,9 @@
             </div>
             <div class="col-auto pb-5">    
                 <input type="text" class="form-control w-75" id="link" name="link"  autocomplete="off" placeholder="Link">
+            </div>
+            <div class="col-auto pt-2">
+                <span class="text-secondary"> <<-- Please put the fully qualified domain name</span>
             </div>
             <div class="col-auto">
                 <p id="feedback-5"></p>

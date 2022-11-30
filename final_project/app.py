@@ -9,7 +9,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask_session import Session
 
 UPLOADE_FOLDER = "C:\\Users\\Alaa-Ansi\\vscode\\final_project\\static\\uploads"
-allowed_extentions = ['png', 'jpg', 'jpeg']
+allowed_extensions = ['png', 'jpg', 'jpeg']
 
 #app configration
 app = Flask(__name__)
@@ -220,18 +220,18 @@ def logout():
 
 #+-----------------------------------------------------------------------+#
 
-def allow_extention(filename):
+def allow_extension(filename):
     """ Allow only images formats [png, jpeg, jpg] """
 
     #checking first if it is a file 
     if not "." in filename:
         return False
 
-    #now splitting the file name to merely get the extention
+    #now splitting the file name to merely get the extension
     ext = str(filename).rsplit("'")[1].lower().rsplit(".", 1)[1]
 
     # checking if it's a allowed image format
-    if ext in  allowed_extentions:
+    if ext in  allowed_extensions:
         return True
     else:
 
@@ -245,7 +245,7 @@ def add_website():
 
     if request.method == "POST":
 
-        # before anything , get the informations, and check for possible errors
+        # before anything, check for possible errors, then store the information
 
         #check images
         if not request.files.get("image"):
@@ -285,7 +285,7 @@ def add_website():
 
 
         #checking if it's a allowed image format
-        if not allow_extention(str(image)):
+        if not allow_extension(str(image)):
             print("image format is not allowed, allowed formats is PNG, JPG, JPEG")
    
 
@@ -296,7 +296,7 @@ def add_website():
             os.makedirs(os.path.join(f"C:\\Users\\Alaa-Ansi\\vscode\\final_project\\static\\uploads\\{session['id']}"))
             print(f"made a new file called {session['id']}")
 
-        # create a new directory with the added website name (for more capality)
+        # create a new directory with the added website name (for more capability)
         if not os.path.exists(f"C:\\Users\\Alaa-Ansi\\vscode\\final_project\\static\\uploads\\{session['id']}\\{name.strip()}"):
             os.makedirs(os.path.join(f"C:\\Users\\Alaa-Ansi\\vscode\\final_project\\static\\uploads\\{session['id']}\\{name.strip()}"))    
 
